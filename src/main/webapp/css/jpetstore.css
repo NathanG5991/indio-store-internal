@@ -1,0 +1,168 @@
+/**
+ *    Copyright 2010-2026 the original author or authors.
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *       https://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+/* --- JPetStore Modern Reboot --- */
+:root {
+  --primary: #2ecc71;       /* Vert Émeraude */
+  --primary-hover: #27ae60;
+  --bg-dark: #1a1a1a;       /* Fond extérieur */
+  --bg-card: #ffffff;       /* Fond contenu */
+  --text-main: #2c3e50;
+  --accent: #e67e22;        /* Orange pour le menu/liens */
+  --shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-main);
+  background-color: var(--bg-dark);
+  line-height: 1.6;
+}
+
+/* Conteneur principal plus large et moderne */
+#Content {
+  margin: 20px auto;
+  width: 90%;
+  max-width: 1200px;
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Header (Logo, Menu, Search) */
+#Logo, #Menu, #Search {
+  background-color: #cd4022;
+  height: 80px;
+  line-height: 80px;
+  border: none;
+}
+
+#Logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding-left: 20px;
+}
+
+#Menu a, #Search {
+  color: var(--accent) !important;
+  transition: 0.3s;
+}
+
+#Menu a:hover {
+  color: #fff !important;
+  text-shadow: 0 0 10px var(--accent);
+}
+
+/* Barre de recherche stylisée */
+#Search input {
+  border-radius: 20px;
+  padding: 5px 15px;
+  border: 1px solid #444;
+  background: #222;
+  color: #fff;
+  outline: none;
+}
+
+/* QuickLinks (Poissons, Chiens, etc.) */
+#QuickLinks {
+  background-color: #f8f9fa;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+#QuickLinks a img {
+  transition: transform 0.3s;
+  filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.1));
+}
+
+#QuickLinks a:hover img {
+  transform: scale(1.2);
+}
+
+/* Boutons Modernes */
+a.Button, input[type="submit"] {
+  display: inline-block;
+  padding: 10px 20px !important;
+  border-radius: 25px !important;
+  background-color: var(--primary) !important;
+  color: white !important;
+  font-weight: bold !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border: none !important;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+a.Button:hover, input[type="submit"]:hover {
+  background-color: var(--primary-hover) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+/* Tables de produits */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  margin: 20px 0;
+}
+
+th {
+  background-color: #f1f1f1;
+  color: #666;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 15px;
+}
+
+td {
+  background-color: #fff;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  padding: 15px;
+}
+
+/* Catalogue et Images */
+#MainImage {
+    padding: 20px;
+}
+
+#MainImage img {
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+/* Sidebar (Menu de gauche) */
+#Sidebar {
+    padding: 20px;
+    border-right: 1px solid #eee;
+}
+
+#Sidebar a {
+    display: block;
+    padding: 8px;
+    color: var(--text-main);
+    border-radius: 5px;
+}
+
+#Sidebar a:hover {
+    background-color: #f0f0f0;
+    color: var(--primary);
+}
