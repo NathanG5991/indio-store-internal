@@ -1,17 +1,17 @@
 /*
- *    Copyright 2010-2022 the original author or authors.
+ * Copyright 2010-2022 the original author or authors.
  *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *       https://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.mybatis.jpetstore.mapper;
 
@@ -48,23 +48,23 @@ class AccountMapperTest {
     Account account = mapper.getAccountByUsername(username);
 
     // then
+    // Correspondance exacte avec les données du compte Admin (j2ee)
     assertThat(account.getUsername()).isEqualTo("j2ee");
     assertThat(account.getEmail()).isEqualTo("admin@indio-group.com");
-    assertThat(account.getFirstName()).isEqualTo("ABC");
-    assertThat(account.getLastName()).isEqualTo("XYX");
+    assertThat(account.getFirstName()).isEqualTo("Indio");
+    assertThat(account.getLastName()).isEqualTo("Admin");
     assertThat(account.getStatus()).isEqualTo("OK");
-    assertThat(account.getAddress1()).isEqualTo("901 San Antonio Road");
-    assertThat(account.getAddress2()).isEqualTo("MS UCUP02-206");
-    assertThat(account.getCity()).isEqualTo("Palo Alto");
-    assertThat(account.getState()).isEqualTo("CA");
-    assertThat(account.getZip()).isEqualTo("94303");
-    assertThat(account.getCountry()).isEqualTo("USA");
-    assertThat(account.getPhone()).isEqualTo("555-555-5555");
-    assertThat(account.getLanguagePreference()).isEqualTo("english");
-    assertThat(account.getFavouriteCategoryId()).isEqualTo("DOGS");
+    assertThat(account.getAddress1()).isEqualTo("Siège Social");
+    assertThat(account.getAddress2()).isEqualTo("Bâtiment A");
+    assertThat(account.getCity()).isEqualTo("Paris");
+    assertThat(account.getState()).isEqualTo("IDF");
+    assertThat(account.getZip()).isEqualTo("75001");
+    assertThat(account.getCountry()).isEqualTo("France");
+    assertThat(account.getPhone()).isEqualTo("01-02-03-04-05");
+    assertThat(account.getLanguagePreference()).isEqualTo("french");
+    assertThat(account.getFavouriteCategoryId()).isEqualTo("IT");
     assertThat(account.isListOption()).isTrue();
     assertThat(account.isBannerOption()).isTrue();
-
   }
 
   @Test
@@ -77,29 +77,29 @@ class AccountMapperTest {
     Account account = mapper.getAccountByUsernameAndPassword(username, password);
 
     // then
+    // Correspondance exacte avec les données du compte Employé (ACID)
     assertThat(account.getUsername()).isEqualTo("ACID");
     assertThat(account.getEmail()).isEqualTo("staff@indio-group.com");
-    assertThat(account.getFirstName()).isEqualTo("ABC");
-    assertThat(account.getLastName()).isEqualTo("XYX");
+    assertThat(account.getFirstName()).isEqualTo("Employé");
+    assertThat(account.getLastName()).isEqualTo("Indio");
     assertThat(account.getStatus()).isEqualTo("OK");
-    assertThat(account.getAddress1()).isEqualTo("901 San Antonio Road");
-    assertThat(account.getAddress2()).isEqualTo("MS UCUP02-206");
-    assertThat(account.getCity()).isEqualTo("Palo Alto");
-    assertThat(account.getState()).isEqualTo("CA");
-    assertThat(account.getZip()).isEqualTo("94303");
-    assertThat(account.getCountry()).isEqualTo("USA");
-    assertThat(account.getPhone()).isEqualTo("555-555-5555");
-    assertThat(account.getLanguagePreference()).isEqualTo("english");
-    assertThat(account.getFavouriteCategoryId()).isEqualTo("CATS");
+    assertThat(account.getAddress1()).isEqualTo("Bureau Lyon");
+    assertThat(account.getAddress2()).isEqualTo("Espace Cowork");
+    assertThat(account.getCity()).isEqualTo("Lyon");
+    assertThat(account.getState()).isEqualTo("Rhone");
+    assertThat(account.getZip()).isEqualTo("69000");
+    assertThat(account.getCountry()).isEqualTo("France");
+    assertThat(account.getPhone()).isEqualTo("04-05-06-07-08");
+    assertThat(account.getLanguagePreference()).isEqualTo("french");
+    assertThat(account.getFavouriteCategoryId()).isEqualTo("OFFICE");
     assertThat(account.isListOption()).isTrue();
     assertThat(account.isBannerOption()).isTrue();
-    assertThat(account.getBannerName()).isEqualTo("<image src=\"../images/banner_cats.gif\">");
-
+    // La bannière pour "OFFICE" dans ton script SQL
+    assertThat(account.getBannerName()).isEqualTo("FOURNITURES DE BUREAU");
   }
 
   @Test
   void insertAccount() {
-
     // given
     Account account = new Account();
     account.setUsername("mybatis");
@@ -131,12 +131,11 @@ class AccountMapperTest {
 
   @Test
   void insertProfile() {
-
     // given
     Account account = new Account();
     account.setUsername("mybatis");
-    account.setLanguagePreference("japanese");
-    account.setFavouriteCategoryId("C01");
+    account.setLanguagePreference("french");
+    account.setFavouriteCategoryId("IT"); // Sécurisé avec une vraie catégorie Indio Store
     account.setListOption(true);
     account.setBannerOption(false);
 
@@ -154,7 +153,6 @@ class AccountMapperTest {
 
   @Test
   void insertSignon() {
-
     // given
     Account account = new Account();
     account.setUsername("mybatis");
@@ -172,7 +170,6 @@ class AccountMapperTest {
 
   @Test
   void updateAccount() {
-
     // given
     Account account = new Account();
     account.setUsername("j2ee");
@@ -205,12 +202,11 @@ class AccountMapperTest {
 
   @Test
   void updateProfile() {
-
     // given
     Account account = new Account();
     account.setUsername("j2ee");
-    account.setLanguagePreference("japanese");
-    account.setFavouriteCategoryId("C01");
+    account.setLanguagePreference("french");
+    account.setFavouriteCategoryId("IT"); // Sécurisé avec une vraie catégorie
     account.setListOption(false);
     account.setBannerOption(false);
 
@@ -228,7 +224,6 @@ class AccountMapperTest {
 
   @Test
   void updateSignon() {
-
     // given
     Account account = new Account();
     account.setUsername("j2ee");
@@ -243,5 +238,4 @@ class AccountMapperTest {
     assertThat(record).hasSize(2).containsEntry("USERNAME", account.getUsername()).containsEntry("PASSWORD",
         account.getPassword());
   }
-
 }
