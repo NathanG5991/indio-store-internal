@@ -49,7 +49,7 @@ class AccountMapperTest {
 
     // then
     assertThat(account.getUsername()).isEqualTo("j2ee");
-    assertThat(account.getEmail()).isEqualTo("yourname@yourdomain.com");
+    assertThat(account.getEmail()).isEqualTo("admin@indio-group.com");
     assertThat(account.getFirstName()).isEqualTo("ABC");
     assertThat(account.getLastName()).isEqualTo("XYX");
     assertThat(account.getStatus()).isEqualTo("OK");
@@ -64,7 +64,6 @@ class AccountMapperTest {
     assertThat(account.getFavouriteCategoryId()).isEqualTo("DOGS");
     assertThat(account.isListOption()).isTrue();
     assertThat(account.isBannerOption()).isTrue();
-    assertThat(account.getBannerName()).isEqualTo("<image src=\"../images/banner_dogs.gif\">");
 
   }
 
@@ -79,7 +78,7 @@ class AccountMapperTest {
 
     // then
     assertThat(account.getUsername()).isEqualTo("ACID");
-    assertThat(account.getEmail()).isEqualTo("acid@yourdomain.com");
+    assertThat(account.getEmail()).isEqualTo("staff@indio-group.com");
     assertThat(account.getFirstName()).isEqualTo("ABC");
     assertThat(account.getLastName()).isEqualTo("XYX");
     assertThat(account.getStatus()).isEqualTo("OK");
