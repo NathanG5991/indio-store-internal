@@ -1,17 +1,17 @@
 /*
- *    Copyright 2010-2022 the original author or authors.
+ * Copyright 2010-2022 the original author or authors.
  *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *       https://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.mybatis.jpetstore.mapper;
 
@@ -39,49 +39,50 @@ class ProductMapperTest {
   @Test
   void getProductListByCategory() {
     // given
-    String categoryId = "FISH";
+    String categoryId = "IT";
 
     // when
     List<Product> products = mapper.getProductListByCategory(categoryId);
 
     // then
     products.sort(Comparator.comparing(Product::getProductId));
-    assertThat(products).hasSize(4);
-    assertThat(products.get(0).getProductId()).isEqualTo("FI-FW-01");
-    assertThat(products.get(0).getName()).isEqualTo("Koi");
-    assertThat(products.get(0).getCategoryId()).isEqualTo("FISH");
+    assertThat(products).hasSize(3);
+    
+    // Index 0: IT-LP-01
+    assertThat(products.get(0).getProductId()).isEqualTo("IT-LP-01");
+    assertThat(products.get(0).getName()).isEqualTo("Dell XPS 15");
+    assertThat(products.get(0).getCategoryId()).isEqualTo("IT");
     assertThat(products.get(0).getDescription())
-        .isEqualTo("<image src=\"../images/fish3.gif\">Fresh Water fish from Japan");
-    assertThat(products.get(1).getProductId()).isEqualTo("FI-FW-02");
-    assertThat(products.get(1).getName()).isEqualTo("Goldfish");
-    assertThat(products.get(1).getCategoryId()).isEqualTo("FISH");
+        .isEqualTo("Ordinateur portable haute performance pour développeur");
+        
+    // Index 1: IT-LP-02
+    assertThat(products.get(1).getProductId()).isEqualTo("IT-LP-02");
+    assertThat(products.get(1).getName()).isEqualTo("MacBook Pro");
+    assertThat(products.get(1).getCategoryId()).isEqualTo("IT");
     assertThat(products.get(1).getDescription())
-        .isEqualTo("<image src=\"../images/fish2.gif\">Fresh Water fish from China");
-    assertThat(products.get(2).getProductId()).isEqualTo("FI-SW-01");
-    assertThat(products.get(2).getName()).isEqualTo("Angelfish");
-    assertThat(products.get(2).getCategoryId()).isEqualTo("FISH");
+        .isEqualTo("Apple Silicon M3 - 16GB RAM");
+        
+    // Index 2: IT-MN-01
+    assertThat(products.get(2).getProductId()).isEqualTo("IT-MN-01");
+    assertThat(products.get(2).getName()).isEqualTo("Écran 27 Pouces");
+    assertThat(products.get(2).getCategoryId()).isEqualTo("IT");
     assertThat(products.get(2).getDescription())
-        .isEqualTo("<image src=\"../images/fish1.gif\">Salt Water fish from Australia");
-    assertThat(products.get(3).getProductId()).isEqualTo("FI-SW-02");
-    assertThat(products.get(3).getName()).isEqualTo("Tiger Shark");
-    assertThat(products.get(3).getCategoryId()).isEqualTo("FISH");
-    assertThat(products.get(3).getDescription())
-        .isEqualTo("<image src=\"../images/fish4.gif\">Salt Water fish from Australia");
+        .isEqualTo("Dalle 4K pour graphistes et bureautique");
   }
 
   @Test
   void getProduct() {
     // given
-    String productId = "FI-FW-01";
+    String productId = "IT-LP-01";
 
     // when
     Product product = mapper.getProduct(productId);
 
     // then
-    assertThat(product.getProductId()).isEqualTo("FI-FW-01");
-    assertThat(product.getName()).isEqualTo("Koi");
-    assertThat(product.getCategoryId()).isEqualTo("FISH");
-    assertThat(product.getDescription()).isEqualTo("<image src=\"../images/fish3.gif\">Fresh Water fish from Japan");
+    assertThat(product.getProductId()).isEqualTo("IT-LP-01");
+    assertThat(product.getName()).isEqualTo("Dell XPS 15");
+    assertThat(product.getCategoryId()).isEqualTo("IT");
+    assertThat(product.getDescription()).isEqualTo("Ordinateur portable haute performance pour développeur");
   }
 
   @Test
@@ -95,19 +96,31 @@ class ProductMapperTest {
     // then
     products.sort(Comparator.comparing(Product::getProductId));
     System.out.println(products);
-    assertThat(products).hasSize(8);
-    assertThat(products.get(0).getProductId()).isEqualTo("AV-CB-01");
-    assertThat(products.get(0).getName()).isEqualTo("Amazon Parrot");
-    assertThat(products.get(0).getCategoryId()).isEqualTo("BIRDS");
+    
+    // Il y a 6 produits contenant la lettre "o" ou "O" dans leur nom
+    assertThat(products).hasSize(6);
+    
+    // 0: COF-01 (Boîte Café)
+    assertThat(products.get(0).getProductId()).isEqualTo("COF-01");
+    assertThat(products.get(0).getName()).isEqualTo("Boîte Café");
+    assertThat(products.get(0).getCategoryId()).isEqualTo("COF");
     assertThat(products.get(0).getDescription())
-        .isEqualTo("<image src=\"../images/bird2.gif\">Great companion for up to 75 years");
-    assertThat(products.get(1).getName()).isEqualTo("Koi");
-    assertThat(products.get(2).getName()).isEqualTo("Goldfish");
-    assertThat(products.get(3).getName()).isEqualTo("Bulldog");
-    assertThat(products.get(4).getName()).isEqualTo("Dalmation");
-    assertThat(products.get(5).getName()).isEqualTo("Poodle");
-    assertThat(products.get(6).getName()).isEqualTo("Golden Retriever");
-    assertThat(products.get(7).getName()).isEqualTo("Labrador Retriever");
+        .isEqualTo("Pack de 50 capsules expresso");
+        
+    // 1: FUR-01 (Chaise Ergonomique)
+    assertThat(products.get(1).getName()).isEqualTo("Chaise Ergonomique");
+    
+    // 2: IT-LP-02 (MacBook Pro)
+    assertThat(products.get(2).getName()).isEqualTo("MacBook Pro");
+    
+    // 3: IT-MN-01 (Écran 27 Pouces)
+    assertThat(products.get(3).getName()).isEqualTo("Écran 27 Pouces");
+    
+    // 4: OFF-01 (Carnet Indio)
+    assertThat(products.get(4).getName()).isEqualTo("Carnet Indio");
+    
+    // 5: OFF-02 (Pack Stylos)
+    assertThat(products.get(5).getName()).isEqualTo("Pack Stylos");
   }
 
 }
