@@ -1,17 +1,17 @@
 /*
- *    Copyright 2010-2022 the original author or authors.
+ * Copyright 2010-2022 the original author or authors.
  *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *       https://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.mybatis.jpetstore.mapper;
 
@@ -46,7 +46,7 @@ class ItemMapperTest {
   @Test
   void getItemListByProduct() {
     // given
-    String productId = "FI-SW-01";
+    String productId = "IT-LP-01";
 
     // when
     List<Item> items = mapper.getItemListByProduct(productId);
@@ -54,36 +54,40 @@ class ItemMapperTest {
     // then
     items.sort(Comparator.comparing(Item::getItemId));
     assertThat(items).hasSize(2);
+    
+    // Test for EST-1 (Dell XPS 15 - 32GB RAM)
     assertThat(items.get(0).getItemId()).isEqualTo("EST-1");
-    assertThat(items.get(0).getListPrice()).isEqualTo(new BigDecimal("16.50"));
-    assertThat(items.get(0).getUnitCost()).isEqualTo(new BigDecimal("10.00"));
+    assertThat(items.get(0).getListPrice()).isEqualTo(new BigDecimal("1500.00"));
+    assertThat(items.get(0).getUnitCost()).isEqualTo(new BigDecimal("1200.00"));
     assertThat(items.get(0).getSupplierId()).isEqualTo(1);
     assertThat(items.get(0).getStatus()).isEqualTo("P");
-    assertThat(items.get(0).getAttribute1()).isEqualTo("Large");
+    assertThat(items.get(0).getAttribute1()).isEqualTo("32GB RAM");
     assertThat(items.get(0).getAttribute2()).isNull();
     assertThat(items.get(0).getAttribute3()).isNull();
     assertThat(items.get(0).getAttribute4()).isNull();
     assertThat(items.get(0).getAttribute5()).isNull();
-    assertThat(items.get(0).getProduct().getProductId()).isEqualTo("FI-SW-01");
-    assertThat(items.get(0).getProduct().getName()).isEqualTo("Angelfish");
+    assertThat(items.get(0).getProduct().getProductId()).isEqualTo("IT-LP-01");
+    assertThat(items.get(0).getProduct().getName()).isEqualTo("Dell XPS 15");
     assertThat(items.get(0).getProduct().getDescription())
-        .isEqualTo("<image src=\"../images/fish1.gif\">Salt Water fish from Australia");
-    assertThat(items.get(0).getProduct().getCategoryId()).isEqualTo("FISH");
+        .isEqualTo("Ordinateur portable haute performance pour développeur");
+    assertThat(items.get(0).getProduct().getCategoryId()).isEqualTo("IT");
+    
+    // Test for EST-2 (Dell XPS 15 - 16GB RAM)
     assertThat(items.get(1).getItemId()).isEqualTo("EST-2");
-    assertThat(items.get(1).getListPrice()).isEqualTo(new BigDecimal("16.50"));
-    assertThat(items.get(1).getUnitCost()).isEqualTo(new BigDecimal("10.00"));
+    assertThat(items.get(1).getListPrice()).isEqualTo(new BigDecimal("1300.00"));
+    assertThat(items.get(1).getUnitCost()).isEqualTo(new BigDecimal("1000.00"));
     assertThat(items.get(1).getSupplierId()).isEqualTo(1);
     assertThat(items.get(1).getStatus()).isEqualTo("P");
-    assertThat(items.get(1).getAttribute1()).isEqualTo("Small");
+    assertThat(items.get(1).getAttribute1()).isEqualTo("16GB RAM");
     assertThat(items.get(1).getAttribute2()).isNull();
     assertThat(items.get(1).getAttribute3()).isNull();
     assertThat(items.get(1).getAttribute4()).isNull();
     assertThat(items.get(1).getAttribute5()).isNull();
-    assertThat(items.get(1).getProduct().getProductId()).isEqualTo("FI-SW-01");
-    assertThat(items.get(1).getProduct().getName()).isEqualTo("Angelfish");
+    assertThat(items.get(1).getProduct().getProductId()).isEqualTo("IT-LP-01");
+    assertThat(items.get(1).getProduct().getName()).isEqualTo("Dell XPS 15");
     assertThat(items.get(1).getProduct().getDescription())
-        .isEqualTo("<image src=\"../images/fish1.gif\">Salt Water fish from Australia");
-    assertThat(items.get(1).getProduct().getCategoryId()).isEqualTo("FISH");
+        .isEqualTo("Ordinateur portable haute performance pour développeur");
+    assertThat(items.get(1).getProduct().getCategoryId()).isEqualTo("IT");
   }
 
   @Test
@@ -96,20 +100,20 @@ class ItemMapperTest {
 
     // then
     assertThat(item.getItemId()).isEqualTo("EST-1");
-    assertThat(item.getListPrice()).isEqualTo(new BigDecimal("16.50"));
-    assertThat(item.getUnitCost()).isEqualTo(new BigDecimal("10.00"));
+    assertThat(item.getListPrice()).isEqualTo(new BigDecimal("1500.00"));
+    assertThat(item.getUnitCost()).isEqualTo(new BigDecimal("1200.00"));
     assertThat(item.getSupplierId()).isEqualTo(1);
     assertThat(item.getStatus()).isEqualTo("P");
-    assertThat(item.getAttribute1()).isEqualTo("Large");
+    assertThat(item.getAttribute1()).isEqualTo("32GB RAM");
     assertThat(item.getAttribute2()).isNull();
     assertThat(item.getAttribute3()).isNull();
     assertThat(item.getAttribute4()).isNull();
     assertThat(item.getAttribute5()).isNull();
-    assertThat(item.getProduct().getProductId()).isEqualTo("FI-SW-01");
-    assertThat(item.getProduct().getName()).isEqualTo("Angelfish");
+    assertThat(item.getProduct().getProductId()).isEqualTo("IT-LP-01");
+    assertThat(item.getProduct().getName()).isEqualTo("Dell XPS 15");
     assertThat(item.getProduct().getDescription())
-        .isEqualTo("<image src=\"../images/fish1.gif\">Salt Water fish from Australia");
-    assertThat(item.getProduct().getCategoryId()).isEqualTo("FISH");
+        .isEqualTo("Ordinateur portable haute performance pour développeur");
+    assertThat(item.getProduct().getCategoryId()).isEqualTo("IT");
   }
 
   @Test
@@ -121,8 +125,8 @@ class ItemMapperTest {
     int quantity = mapper.getInventoryQuantity(itemId);
 
     // then
-    assertThat(quantity).isEqualTo(10000);
-
+    // Le stock défini pour EST-1 dans ton script SQL est 50
+    assertThat(quantity).isEqualTo(50);
   }
 
   @Test
@@ -137,9 +141,9 @@ class ItemMapperTest {
     mapper.updateInventoryQuantity(params);
 
     // then
+    // Le stock de base est 50. Si on vend/retire 10, il reste 40.
     Integer quantity = jdbcTemplate.queryForObject("SELECT QTY FROM inventory WHERE itemid = ?", Integer.class, itemId);
-    assertThat(quantity).isEqualTo(9990);
-
+    assertThat(quantity).isEqualTo(40);
   }
 
 }
