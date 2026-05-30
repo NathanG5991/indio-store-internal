@@ -1,17 +1,17 @@
 /*
- *    Copyright 2010-2022 the original author or authors.
+ * Copyright 2010-2022 the original author or authors.
  *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *       https://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.mybatis.jpetstore.mapper;
 
@@ -46,41 +46,45 @@ class CategoryMapperTest {
     // then
     categories.sort(Comparator.comparing(Category::getCategoryId));
     assertThat(categories).hasSize(5);
-    assertThat(categories.get(0).getCategoryId()).isEqualTo("BIRDS");
-    assertThat(categories.get(0).getName()).isEqualTo("Birds");
-    assertThat(categories.get(0).getDescription())
-        .isEqualTo("<image src=\"../images/birds_icon.gif\"><font size=\"5\" color=\"blue\"> Birds</font>");
-    assertThat(categories.get(1).getCategoryId()).isEqualTo("CATS");
-    assertThat(categories.get(1).getName()).isEqualTo("Cats");
-    assertThat(categories.get(1).getDescription())
-        .isEqualTo("<image src=\"../images/cats_icon.gif\"><font size=\"5\" color=\"blue\"> Cats</font>");
-    assertThat(categories.get(2).getCategoryId()).isEqualTo("DOGS");
-    assertThat(categories.get(2).getName()).isEqualTo("Dogs");
-    assertThat(categories.get(2).getDescription())
-        .isEqualTo("<image src=\"../images/dogs_icon.gif\"><font size=\"5\" color=\"blue\"> Dogs</font>");
-    assertThat(categories.get(3).getCategoryId()).isEqualTo("FISH");
-    assertThat(categories.get(3).getName()).isEqualTo("Fish");
-    assertThat(categories.get(3).getDescription())
-        .isEqualTo("<image src=\"../images/fish_icon.gif\"><font size=\"5\" color=\"blue\"> Fish</font>");
-    assertThat(categories.get(4).getCategoryId()).isEqualTo("REPTILES");
-    assertThat(categories.get(4).getName()).isEqualTo("Reptiles");
-    assertThat(categories.get(4).getDescription())
-        .isEqualTo("<image src=\"../images/reptiles_icon.gif\"><font size=\"5\" color=\"blue\"> Reptiles</font>");
+    
+    // Index 0: COF
+    assertThat(categories.get(0).getCategoryId()).isEqualTo("COF");
+    assertThat(categories.get(0).getName()).isEqualTo("Espace Café");
+    assertThat(categories.get(0).getDescription()).isEqualTo("<p>Capsules, Gobelets, Thé</p>");
+    
+    // Index 1: ELEC
+    assertThat(categories.get(1).getCategoryId()).isEqualTo("ELEC");
+    assertThat(categories.get(1).getName()).isEqualTo("Électronique");
+    assertThat(categories.get(1).getDescription()).isEqualTo("<p>Câbles, Adaptateurs, Chargeurs</p>");
+    
+    // Index 2: FURN
+    assertThat(categories.get(2).getCategoryId()).isEqualTo("FURN");
+    assertThat(categories.get(2).getName()).isEqualTo("Mobilier");
+    assertThat(categories.get(2).getDescription()).isEqualTo("<p>Chaises ergonomiques, Bureaux</p>");
+    
+    // Index 3: IT
+    assertThat(categories.get(3).getCategoryId()).isEqualTo("IT");
+    assertThat(categories.get(3).getName()).isEqualTo("Informatique");
+    assertThat(categories.get(3).getDescription()).isEqualTo("<p>Laptops, Écrans, Périphériques</p>");
+    
+    // Index 4: OFFICE
+    assertThat(categories.get(4).getCategoryId()).isEqualTo("OFFICE");
+    assertThat(categories.get(4).getName()).isEqualTo("Bureautique");
+    assertThat(categories.get(4).getDescription()).isEqualTo("<p>Papeterie et fournitures de bureau</p>");
   }
 
   @Test
   void getCategory() {
     // given
-    String categoryId = "BIRDS";
+    String categoryId = "IT";
 
     // when
     Category category = mapper.getCategory(categoryId);
 
     // then
-    assertThat(category.getCategoryId()).isEqualTo("BIRDS");
-    assertThat(category.getName()).isEqualTo("Birds");
-    assertThat(category.getDescription())
-        .isEqualTo("<image src=\"../images/birds_icon.gif\"><font size=\"5\" color=\"blue\"> Birds</font>");
+    assertThat(category.getCategoryId()).isEqualTo("IT");
+    assertThat(category.getName()).isEqualTo("Informatique");
+    assertThat(category.getDescription()).isEqualTo("<p>Laptops, Écrans, Périphériques</p>");
   }
 
 }
