@@ -14,9 +14,18 @@
 #    limitations under the License.
 #
 
-FROM openjdk:17.0.2
-COPY . /usr/src/myapp
-WORKDIR /usr/src/myapp
-#RUN ./mvnw clean package
-CMD ["./mvnw", "cargo:run", "-P", "tomcat90"]
-#CMD ./mvnw cargo:run -P tomcat90
+# Utilise un serveur Tomcat officiel prêt à l'emploi avec Java 17
+FROM tomcat:9.0-jre17
+
+# Supprime les applications par défaut de Tomcat pour faire place nette
+RUN rm -rf /usr/local/tomcat/webapps/*
+
+# Copie le fichier .war généré par Jenkins directement dans le dossier de Tomcat
+# (On le renomme ROOT.war pour qu'il réponde sur l'URL / au lieu de /jpetstore)
+COPY target/*.war /usr/local/tomcat/webapps/ROOT.war
+
+# Expose le port 8080
+EXPOSE 8080
+
+# Démarre Tomcat
+CMD ["catalina.sh", "run"]
