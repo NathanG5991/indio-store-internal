@@ -17,20 +17,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: petshop
+  name: indiogroup_internal_site
 spec:
   selector:
     matchLabels:
-      app: petshop
+      app: indiogroup_internal_site
   replicas: 1 
   template: 
     metadata:
       labels:
-        app: petshop
+        app: indiogroup_internal_site
     spec:
       containers:
-      - name: petshop
-        image: nathang5991/petshop:latest
+      - name: indiogroup_internal_site
+        image: nathang5991/indiogroup_internal_site:latest  # <--- CORRIGE CETTE LIGNE
         ports:
         - containerPort: 8080
         imagePullPolicy: Always
@@ -38,14 +38,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: petshop
+  name: indiogroup_internal_site
   annotations:
     # Cette ligne force AWS à créer un Load Balancer public
     service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
 spec:
   type: LoadBalancer
   selector:
-    app: petshop
+    app: indiogroup_internal_site
   ports:
   - name: http
     protocol: TCP
