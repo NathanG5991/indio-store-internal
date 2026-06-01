@@ -1,17 +1,17 @@
 /*
- * Copyright 2010-2022 the original author or authors.
+ *    Copyright 2010-2026 the original author or authors.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
  *
- * https://www.apache.org/licenses/LICENSE-2.0
+ *       https://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
  */
 package org.mybatis.jpetstore.mapper;
 
@@ -46,27 +46,27 @@ class CategoryMapperTest {
     // then
     categories.sort(Comparator.comparing(Category::getCategoryId));
     assertThat(categories).hasSize(5);
-    
+
     // Index 0: COF
     assertThat(categories.get(0).getCategoryId()).isEqualTo("COF");
     assertThat(categories.get(0).getName()).isEqualTo("Espace Café");
     assertThat(categories.get(0).getDescription()).isEqualTo("<p>Capsules, Gobelets, Thé</p>");
-    
+
     // Index 1: ELEC
     assertThat(categories.get(1).getCategoryId()).isEqualTo("ELEC");
     assertThat(categories.get(1).getName()).isEqualTo("Électronique");
     assertThat(categories.get(1).getDescription()).isEqualTo("<p>Câbles, Adaptateurs, Chargeurs</p>");
-    
+
     // Index 2: FURN
     assertThat(categories.get(2).getCategoryId()).isEqualTo("FURN");
     assertThat(categories.get(2).getName()).isEqualTo("Mobilier");
     assertThat(categories.get(2).getDescription()).isEqualTo("<p>Chaises ergonomiques, Bureaux</p>");
-    
+
     // Index 3: IT
     assertThat(categories.get(3).getCategoryId()).isEqualTo("IT");
     assertThat(categories.get(3).getName()).isEqualTo("Informatique");
     assertThat(categories.get(3).getDescription()).isEqualTo("<p>Laptops, Écrans, Périphériques</p>");
-    
+
     // Index 4: OFFICE
     assertThat(categories.get(4).getCategoryId()).isEqualTo("OFFICE");
     assertThat(categories.get(4).getName()).isEqualTo("Bureautique");

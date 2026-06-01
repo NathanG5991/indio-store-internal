@@ -1,17 +1,17 @@
 /*
- * Copyright 2010-2022 the original author or authors.
+ *    Copyright 2010-2026 the original author or authors.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
  *
- * https://www.apache.org/licenses/LICENSE-2.0
+ *       https://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
  */
 package org.mybatis.jpetstore.mapper;
 
@@ -54,7 +54,7 @@ class ItemMapperTest {
     // then
     items.sort(Comparator.comparing(Item::getItemId));
     assertThat(items).hasSize(2);
-    
+
     // Test for EST-1 (Dell XPS 15 - 32GB RAM)
     assertThat(items.get(0).getItemId()).isEqualTo("EST-1");
     assertThat(items.get(0).getListPrice()).isEqualTo(new BigDecimal("1500.00"));
@@ -71,7 +71,7 @@ class ItemMapperTest {
     assertThat(items.get(0).getProduct().getDescription())
         .isEqualTo("Ordinateur portable haute performance pour développeur");
     assertThat(items.get(0).getProduct().getCategoryId()).isEqualTo("IT");
-    
+
     // Test for EST-2 (Dell XPS 15 - 16GB RAM)
     assertThat(items.get(1).getItemId()).isEqualTo("EST-2");
     assertThat(items.get(1).getListPrice()).isEqualTo(new BigDecimal("1300.00"));
@@ -111,8 +111,7 @@ class ItemMapperTest {
     assertThat(item.getAttribute5()).isNull();
     assertThat(item.getProduct().getProductId()).isEqualTo("IT-LP-01");
     assertThat(item.getProduct().getName()).isEqualTo("Dell XPS 15");
-    assertThat(item.getProduct().getDescription())
-        .isEqualTo("Ordinateur portable haute performance pour développeur");
+    assertThat(item.getProduct().getDescription()).isEqualTo("Ordinateur portable haute performance pour développeur");
     assertThat(item.getProduct().getCategoryId()).isEqualTo("IT");
   }
 
